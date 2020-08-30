@@ -10,6 +10,7 @@ from genrl.core.base import BaseActorCritic, BasePolicy, BaseValue
 from genrl.core.noise import NoisyLinear
 from genrl.environments.vec_env import VecEnv
 
+import pdb
 
 def get_model(type_: str, name_: str) -> Union:
     """
@@ -144,6 +145,9 @@ def get_env_properties(
     discreteness of action space and action limit (highest action value)
         :rtype: int, float, ...; int, float, ...; bool; int, float, ...
     """
+
+    pdb.set_trace()
+
     if network == "cnn":
         state_dim = env.framestack
     elif network == "mlp":

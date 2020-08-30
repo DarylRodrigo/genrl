@@ -2,14 +2,15 @@ from pathlib import Path
 
 from matplotlib import pyplot as plt
 
-import genrl
+from genrl.agents import bandits
 
-bandit = genrl.bandit.CovertypeDataBandit()
-agent = genrl.bandit.NeuralLinearPosteriorAgent(bandit)
-trainer = genrl.bandit.DCBTrainer(
-    agent, bandit, logdir="logs/", log_mode=["stdout", "tensorboard"]
-)
-results = trainer.train(timesteps=100)
+from genrl.agents import EpsGreedyMABAgent, BernoulliMAB
+from genrl.trainers import MABTrainer, DCBTrainer
+
+bandit = BernoulliMAB(arms=50, context_type="int")  
+agent = EpsGreedyMABAgent(bandit, eps=0.1)
+trainer = MABTrainer(agent, bandit)             
+results = trainer.train(2000)
 
 fig, axs = plt.subplots(2, 2, figsize=(15, 12), dpi=600)
 fig.suptitle("Deep Contextual Bandit Example", fontsize=14)

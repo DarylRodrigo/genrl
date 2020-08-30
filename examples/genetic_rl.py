@@ -1,11 +1,13 @@
 import argparse
 
-from genrl import A2C, PPO1
+from genrl.agents import A2C, PPO1
 from genrl.deep.common import OnPolicyTrainer
 from genrl.deep.common.actor_critic import MlpActorCritic
 from genrl.deep.common.utils import get_env_properties
 from genrl.environments import VectorEnv
 from genrl.evolutionary import GeneticHyperparamTuner
+
+import pdb
 
 # """
 # Okay so parameters to tune:-
@@ -133,7 +135,7 @@ def main(args):
         action_lim=action_lim,
         activation="relu",
     )
-
+    
     generic_agent = A2C(network, env, rollout_size=args.rollout_size)
 
     agent_parameter_choices = {

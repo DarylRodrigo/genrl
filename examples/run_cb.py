@@ -4,16 +4,19 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 import genrl
+from genrl.agents import BootstrapNeuralAgent, FixedAgent, LinearPosteriorAgent, \
+    NeuralGreedyAgent, NeuralLinearPosteriorAgent, NeuralNoiseSamplingAgent, \
+    VariationalAgent, EpsGreedyMABAgent, BernoulliMAB, GaussianMAB
 from genrl.bandit.trainer import DCBTrainer
 
 ALGOS = {
-    "bootstrap": genrl.agents.bandits.contextual.BootstrapNeuralAgent,
-    "fixed": genrl.agents.bandits.contextual.FixedAgent,
-    "linpos": genrl.agents.bandits.contextual.LinearPosteriorAgent,
-    "neural-greedy": genrl.agents.bandits.contextual.NeuralGreedyAgent,
-    "neural-linpos": genrl.agents.bandits.contextual.NeuralLinearPosteriorAgent,
-    "neural-noise": genrl.agents.bandits.contextual.NeuralNoiseSamplingAgent,
-    "variational": genrl.agents.bandits.contextual.VariationalAgent,
+    "bootstrap": BootstrapNeuralAgent,
+    "fixed": FixedAgent,
+    "linpos": LinearPosteriorAgent,
+    "neural-greedy": NeuralGreedyAgent,
+    "neural-linpos": NeuralLinearPosteriorAgent,
+    "neural-noise": NeuralNoiseSamplingAgent,
+    "variational": VariationalAgent,
 }
 BANDITS = {
     "adult": genrl.utils.data_bandits.AdultDataBandit,
@@ -22,8 +25,8 @@ BANDITS = {
     "magic": genrl.utils.data_bandits.MagicDataBandit,
     "mushroom": genrl.utils.data_bandits.MushroomDataBandit,
     "statlog": genrl.utils.data_bandits.StatlogDataBandit,
-    "bernoulli": genrl.core.bandit.BernoulliMAB,
-    "gaussian": genrl.core.bandit.GaussianMAB,
+    "bernoulli": BernoulliMAB,
+    "gaussian": GaussianMAB,
 }
 
 

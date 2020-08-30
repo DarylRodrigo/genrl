@@ -53,7 +53,6 @@ class A2C(OnPolicyAgent):
         self.noise_std = noise_std
         self.value_coeff = value_coeff
         self.entropy_coeff = entropy_coeff
-
         self.empty_logs()
         if self.create_model:
             self._create_model()
